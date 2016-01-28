@@ -10,16 +10,9 @@ import hashlib                                                                  
 '''
 获取服务器接口测试，用于运营后台，接收获取应用服务器的申请，返回申请的结果
 '''
-
-
 class test_server_interface(unittest.TestCase):
     url = 'http://wwwapi.15166.com/server?action=listAll'                                        #所要访问的url,一个测试类对应一个url
     
-    def md5(str):                                                                                #MD5加密函数
-        m = hashlib.md5()   
-        m.update(str)
-        return m.hexdigest()    
- 
     def setUp(self):                                                                             #文件/数据库/网络服务初始化工作
         pass
 
@@ -35,12 +28,13 @@ class test_server_interface(unittest.TestCase):
                 with self.subTest(row=row):                                                      #row=i,会报错row is not defined,必须用row=row(这里用的是subTest功能)
                     print("正在为'获取服务器接口模块'执行第 %d 条测试数据"% server_interface_num)#每跑一条数据,显示一次当前进度
                        
- 
                     info = {'appid': row['appid'], 'channel': row['channel'], 'time':'', 'sign':''} #csv里的每一行测试实例，这里不用过滤空值，空值可以作为测试用例，引发异常
-                    info['time'] = time.time();                                                  #赋值字典time
+                    info['time'] =str(int(time.time()));                                         #赋值字典time
+                 
                     strmd5 = info['appid']+info['time']+row['appkey'];                          
-                    info['sign'] = md5(strmd5);                                                  #赋值字典sign
-
+                    info['sign'] = hashlib.md5(strmd5.encode(encoding='UTF8')).hexdigest()
+                   
+                    print(info);
  
                     data = urllib.parse.urlencode(info).encode(encoding='UTF8')                  #将信息编码成urllib能够识别的类型,注意的是python2.7用的ASCII编码,python3.X要UTF8转码  
                     req = urllib.request.Request(test_server_interface.url, data)                #构造请求对象  
@@ -49,7 +43,7 @@ class test_server_interface(unittest.TestCase):
                     self.assertEqual(response_dict["res"], eval(row['res']))                     #获取服务器接口模块---您看到此信息,代表当行测试数据未通过---  
                  
         print("----------------------------------------------------------------------------------------------------------------------")
-        print response_dict['data'];
+        print(response_dict['data']);
         print("----------------------------------------------------------------------------------------------------------------------")
 
 
