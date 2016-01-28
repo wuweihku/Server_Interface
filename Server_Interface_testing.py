@@ -11,7 +11,7 @@ import hashlib                                                                  
 获取服务器接口测试，用于运营后台，接收获取应用服务器的申请，返回申请的结果
 '''
 class test_server_interface(unittest.TestCase):
-    url = 'http://wwwapi.15166.com/server?action=listAll'                                        #所要访问的url,一个测试类对应一个url
+    url = 'http://wwwapi.15166.com/server?action=listAll&'                                        #所要访问的url,一个测试类对应一个url
     
     def setUp(self):                                                                             #文件/数据库/网络服务初始化工作
         pass
@@ -34,14 +34,23 @@ class test_server_interface(unittest.TestCase):
                     strmd5 = info['appid']+info['time']+row['appkey'];                          
                     info['sign'] = hashlib.md5(strmd5.encode(encoding='UTF8')).hexdigest()
                    
-                    print(info);
+                   # print(info);                                                                 #请求时发送的参数字典
  
-                    data = urllib.parse.urlencode(info).encode(encoding='UTF8')                  #将信息编码成urllib能够识别的类型,注意的是python2.7用的ASCII编码,python3.X要UTF8转码  
-                    req = urllib.request.Request(test_server_interface.url, data)                #构造请求对象  
-                    response = urllib.request.urlopen(req)                                       #执行post请求
-                    response_dict = eval(response.read())                                        #读取发回的数据,并将字符串转换为字典 
-                    self.assertEqual(response_dict["res"], eval(row['res']))                     #获取服务器接口模块---您看到此信息,代表当行测试数据未通过---  
-                 
+                    url_values = urllib.parse.urlencode(info);                                   #将信息编码成urllib能够识别的类型,注意的是python2.7用的ASCII编码,python3.X要UTF8转码  
+                    full_url = test_server_interface.url+url_values;
+                    
+                   # print(full_url);                                                             #get方法最终请求的URL
+    
+                    response = urllib.request.urlopen(full_url).read(); 
+                    
+                   # print(response);                                                             #服务器响应的字符串消息
+  
+                    response_dict = eval(response); 
+                  
+                    print(response_dict);                                                        #转换成字典后的消息
+                    
+                    self.assertEqual(response_dict['code'], eval(row['code']))                   #获取服务器接口模块---您看到此信息,代表当行测试数据未通过---  
+        
         print("----------------------------------------------------------------------------------------------------------------------")
         print(response_dict['data']);
         print("----------------------------------------------------------------------------------------------------------------------")
@@ -52,7 +61,7 @@ unittest.main(),固定格式,用于默认调用unittest模块
 '''
 
 if __name__ == '__main__':
-    log_file = 'log/log_%s.txt'%time.strftime("%Y_%m_%d_%H:%M:%S", time.localtime())            #定义log路径及文件名
+    log_file = 'log/log_%s.txt'%time.strftime("%Y_%m_%d_%H:%M:%S", time.localtime())             #定义log路径及文件名
     f = open(log_file, "w")
     runner = unittest.TextTestRunner(f)
     unittest.main(testRunner=runner)

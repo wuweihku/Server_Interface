@@ -1,0 +1,37 @@
+
+======================================================================
+FAIL: test_server_interface_cases (__main__.test_server_interface) (row={'channel': '', 'appid': '2015121501', 'appkey': '3d2yHsOyi5QjgpijeamIreX74f7VgUhi4c', 'code': '12001', 'comments': '缺少参数'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "Server_Interface_testing.py", line 52, in test_server_interface_cases
+    self.assertEqual(response_dict['code'], eval(row['code']))                   #获取服务器接口模块---您看到此信息,代表当行测试数据未通过---
+AssertionError: 12000 != 12001
+
+======================================================================
+FAIL: test_server_interface_cases (__main__.test_server_interface) (row={'channel': '100', 'appid': '', 'appkey': '3d2yHsOyi5QjgpijeamIreX74f7VgUhi4c', 'code': '12001', 'comments': '缺少参数'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "Server_Interface_testing.py", line 52, in test_server_interface_cases
+    self.assertEqual(response_dict['code'], eval(row['code']))                   #获取服务器接口模块---您看到此信息,代表当行测试数据未通过---
+AssertionError: 12002 != 12001
+
+======================================================================
+FAIL: test_server_interface_cases (__main__.test_server_interface) (row={'channel': '100', 'appid': '', 'appkey': '3d2yHsOyi5QjgpijeamIreX74f7VgUhi4c', 'code': '12001', 'comments': '缺少参数'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "Server_Interface_testing.py", line 52, in test_server_interface_cases
+    self.assertEqual(response_dict['code'], eval(row['code']))                   #获取服务器接口模块---您看到此信息,代表当行测试数据未通过---
+AssertionError: 12002 != 12001
+
+======================================================================
+FAIL: test_server_interface_cases (__main__.test_server_interface) (row={'channel': '100', 'appid': '2015121501', 'appkey': '', 'code': '12001', 'comments': '缺少参数'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "Server_Interface_testing.py", line 52, in test_server_interface_cases
+    self.assertEqual(response_dict['code'], eval(row['code']))                   #获取服务器接口模块---您看到此信息,代表当行测试数据未通过---
+AssertionError: 12002 != 12001
+
+----------------------------------------------------------------------
+Ran 1 test in 2.549s
+
+FAILED (failures=4)

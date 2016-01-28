@@ -1,2 +1,15 @@
-comments,appid,channel,appkey,res
-枪炮_后台测试,2015121501,100,3d2yHsOyi5QjgpijeamIreX74f7VgUhi4c,10001
+comments,appid,channel,appkey,code
+枪炮_后台测试,2015121501,100,3d2yHsOyi5QjgpijeamIreX74f7VgUhi4c,12000
+sign值错误,2015121501,100,3d2yHsOyi5QjgpijeamIreX84f7VgUhi4c,12002
+sign值错误,2015121501,100,3d2yHsOyi5QjgpijeamIreX74sf7VgUhi4c,12002
+sign值错误,2015121501,100,3d2yHsOyi5QjgpijeIreX74sf7VgUhi4c,12002
+sign值错误,2015121501,100,3d2yHsOyi5QjgpijeamIreX74fsdadsasd7VgUhi4c,12002
+sign值错误,2015121501,100,3d2yHsOyi5QjgpijeamIUhi4c,12002
+缺少参数,2015121501,,3d2yHsOyi5QjgpijeamIreX74f7VgUhi4c,12001
+缺少参数,,100,3d2yHsOyi5QjgpijeamIreX74f7VgUhi4c,12001
+缺少参数,,100,3d2yHsOyi5QjgpijeamIreX74f7VgUhi4c,12001
+缺少参数,2015121501,100,,12001
+枪炮_卓游测试（内部）,2015121501,1001,3d2yHsOyi5QjgpijeamIreX74f7VgUhi4c,12000
+枪炮_后台测试,2015121501,100,3d2yHsOyi5QjgpijeamIreX74f7VgUhi4c,12000
+枪炮_爱奇艺,2015121501,116,3d2yHsOyi5QjgpijeamIreX74f7VgUhi4c,12000
+水Q_爱奇艺,1601250001,116,563edd21157e9d518efcf691536897c4a8,12000
